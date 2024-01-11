@@ -16,6 +16,7 @@ public class IdentificadorDePerfil {
                 Identifique o perfil de compra de cada cliente.
                                 
                 A resposta deve ser:
+                
                 Cliente - descreva o perfil do cliente em três palavras
                 """;
 
@@ -24,7 +25,7 @@ public class IdentificadorDePerfil {
         final var service = new OpenAiService(chave, Duration.ofSeconds(30));
 
         final var request = ChatCompletionRequest.builder()
-                .model("gtp-3.5-turbo")
+                .model("gpt-3.5-turbo")
                 .messages(Arrays.asList(new ChatMessage(ChatMessageRole.SYSTEM.value(), system),
                                         new ChatMessage(ChatMessageRole.USER.value(), clientes)))
                 .build();
