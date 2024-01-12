@@ -16,10 +16,12 @@ public class IdentificadorDePerfil {
     public static void main(String[] args) {
         final var system = """
                 Identifique o perfil de compra de cada cliente.
-                                
+                
+                #####
                 A resposta deve ser:
                                 
                 Cliente - descreva o perfil do cliente em três palavras
+                #####
                 """;
 
         final String clientes = carregarClientesDoArquivo();
@@ -33,7 +35,7 @@ public class IdentificadorDePerfil {
         if (quantidadeTokens > 4096 - tamanhoRespostaEsperada) {
             modelo = "gpt-3.5-turbo-16k";
         }
-        System.out.println("QTD tokens " + quantidadeTokens);
+        System.out.println("Quantidade de tokens " + quantidadeTokens);
         System.out.println("Modelo escolhido " + modelo);
 
         final var request = ChatCompletionRequest.builder()
@@ -53,7 +55,7 @@ public class IdentificadorDePerfil {
 
     private static String carregarClientesDoArquivo() {
         try {
-            final var path = Path.of(ClassLoader.getSystemResource("compras/lista_de_compras_100_clientes.csv").toURI());
+            final var path = Path.of(ClassLoader.getSystemResource("compras/lista_de_compras_10_clientes.csv").toURI());
             return Files.readAllLines(path).toString();
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar arquivo", e);
