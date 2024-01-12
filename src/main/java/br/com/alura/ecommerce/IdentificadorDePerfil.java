@@ -53,7 +53,7 @@ public class IdentificadorDePerfil {
 
     private static String carregarClientesDoArquivo() {
         try {
-            final var path = Path.of(ClassLoader.getSystemResource("lista_de_compras_100_clientes.csv").toURI());
+            final var path = Path.of(ClassLoader.getSystemResource("compras/lista_de_compras_100_clientes.csv").toURI());
             return Files.readAllLines(path).toString();
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar arquivo", e);
