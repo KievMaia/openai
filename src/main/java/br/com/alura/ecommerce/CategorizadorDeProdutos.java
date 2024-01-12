@@ -41,7 +41,6 @@ public class CategorizadorDeProdutos {
     private static void dispararRequisicao(final String user, final String system) {
         var chave = System.getenv("OPENAI_API_KEY");
         var service = new OpenAiService(chave, Duration.ofSeconds(30));
-
         var completionRequest = ChatCompletionRequest
                 .builder()
                 .model("gpt-3.5-turbo")
