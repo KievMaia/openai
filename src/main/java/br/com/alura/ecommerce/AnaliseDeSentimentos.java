@@ -1,5 +1,6 @@
 package br.com.alura.ecommerce;
 
+import com.knuddels.jtokkit.api.ModelType;
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.completion.chat.ChatMessageRole;
@@ -18,7 +19,7 @@ public class AnaliseDeSentimentos {
                 Escreva um parágrafo com até 50 palavras resumindo as avaliações e depois atribua qual o sentimento geral para o produto.
                 Identifique também 3 pontos fortes e 3 pontos fracos identificados a partir das avaliações.
                                 
-                #### Formato de saída
+                #### Este deve ser o formato de saída:
                 Nome do produto:
                 Resumo das avaliações: [resuma em até 50 palavras]
                 Sentimento geral: [deve ser: POSITIVO, NEUTRO ou NEGATIVO]
@@ -26,13 +27,13 @@ public class AnaliseDeSentimentos {
                 Pontos fracos: [3 bullets points]
                 """;
 
-        var produto = "tapete-de-yoga";
+        var produto = "mixer-de-sucos-e-vitaminas";
 
         var promptUsuario = carregarArquivo(produto);
 
         var request = ChatCompletionRequest
                 .builder()
-                .model("gpt-4-1106-preview")
+                .model(ModelType.GPT_3_5_TURBO_16K.getName())
                 .messages(Arrays.asList(
                         new ChatMessage(
                                 ChatMessageRole.SYSTEM.value(),
